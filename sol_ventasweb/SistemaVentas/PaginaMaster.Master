@@ -51,58 +51,108 @@
         i::before {
             margin-right: 5px;
         }
+        .sidebar {
+            height: 100%;
+            width: 250px; /* Ancho del sidebar */
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #343a40; /* Color de fondo */
+            padding-top: 56px; /* Altura de la barra de navegación */
+        }
+
+        .sidebar .navbar-brand {
+            color: #E1742D; /* Color del texto del nombre de la marca */
+            margin-left: 10px; /* Espacio entre el borde izquierdo y el texto */
+        }
+
+        .sidebar .navbar-nav {
+            width: 100%;
+        }
+
+        .sidebar .navbar-nav .nav-item {
+            width: 100%;
+        }
+
+        .sidebar .navbar-nav .nav-link {
+            padding: 10px 15px;
+            color: #fff; /* Color del texto de los enlaces */
+        }
+
+        .sidebar .navbar-nav .nav-link:hover {
+            background-color: #4e5256; /* Color de fondo al pasar el mouse */
+        }
+
+        .main-content {
+            margin-left: 250px; /* Ancho del sidebar */
+            padding-top: 56px; /* Altura de la barra de navegación */
+        }
     </style>
 
   <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-2">
-      <a style="color: #E1742D;" class="navbar-brand" href="javascript:void(0)">Sistema de Ventas</a>
-      <button class="navbar-toggler navbar-toggler-right collapsed" type="button" data-toggle="collapse" data-target="#navb" aria-expanded="false">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="navbar-collapse collapse" id="navb" style="">
-        <ul id="menu" class="navbar-nav mr-auto">
-          
-        </ul>
-        <ul class="nav navbar-nav navbar-right" style="color:#fff">
-          <li class="mr-4"><label id="nombreusuario"></label></li>
-          <li class="mr-4"><label id="rolusuario"></label></li>
-          <li class="mr-2"><a href="javascript:CerrarSesion();"><i class="bi bi-x"></i>Salir</a></li>
-        </ul>
-      </div>
+    <div class="sidebar">
+    <nav class="navbar navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Sistema de Ventas</a>
     </nav>
 
+    <!-- Contenido del sidebar -->
+    <ul id="menu" class="navbar-nav mr-auto">
+  
+    </ul>
+
+    <ul class="nav navbar-nav" style="color:#fff">
+      <li class="mr-auto"><label id="nombreusuario"></label></li>
+      <li class="mr-auto"><label id="rolusuario"></label></li>
+      <li class="mr-auto"><a href="javascript:CerrarSesion();"><i class="bi bi-x"></i>Salir</a></li>
+    </ul>
+</div>
+
+<!-- Contenido principal -->
+<div class="main-content">
+    <!-- Contenido principal de la página -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-2">
+        <div class="sidebar-collapse">
+            <!-- Resto del contenido original de la barra de navegación -->
+        </div>
+    </nav>
+
+    <!-- CONTENIDO DE LA LISTAS -->
     <div class="container-fluid">
-      <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-      </asp:ContentPlaceHolder>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
     </div>
+</div>
+
+
     <script src="Controlador/Utilidades.js"></script>
     <script src="Assets/Plugins/loadingoverlay/loadingoverlay.js"></script>
     <script>
         $(document).ready(function () {
+            // Función para inicializar los elementos desplegables
+            function inicializarElementosDesplegables() {
+                $('.nav-item.dropdown .nav-link.dropdown-toggle').click(function () {
+                    $(this).siblings('.dropdown-menu').toggle();
+                });
+            }
 
-
+            // Llamada AJAX para obtener el detalle del usuario
             AjaxGet("../Inicio.aspx/ObtenerDetalleUsuario",
                 function (response) {
                     if (response.estado) {
-
                         $("#menu").html("");
-                        
+
                         $("#nombreusuario").append($("<i>").text(response.objeto.NombreUsuario).addClass("bi bi-person-fill mr-1"));
                         $("#rolusuario").append($("<i>").text(response.objeto.oRol.Descripcion).addClass("bi bi-shield-fill-check mr-1"));
 
                         $.each(response.objeto.oListaMenu, function (i, menu) {
-
-                            var li = null;
-                            var div = null;
-                            li = $("<li>").addClass("nav-item dropdown").append(
+                            var li = $("<li>").addClass("nav-item dropdown").append(
                                 $("<a>").addClass("nav-link dropdown-toggle").attr({ "href": "#", "data-toggle": "dropdown" }).append(
-                                    "<i class='" + menu.Icono + "' aria-hidden='true'></i>" +" " + menu.Nombre
+                                    "<i class='" + menu.Icono + "' aria-hidden='true'></i>" + " " + menu.Nombre
                                 )
                             );
-                            div = $("<div>").addClass("dropdown-menu");
+                            var div = $("<div>").addClass("dropdown-menu");
 
                             $.each(menu.oSubMenu, function (x, submenu) {
                                 if (submenu.Activo) {
@@ -110,28 +160,41 @@
                                         $("<a>").addClass("dropdown-item").attr({ "href": submenu.NombreFormulario + ".aspx" }).append(
                                             "<i class='fa fa-caret-right' aria-hidden='true'></i>" + " " + submenu.Nombre
                                         )
-                                )
+                                    )
                                 }
-                                
-                            })
+                            });
 
                             li.append(div);
                             li.appendTo("#menu");
-                        })
-                        $("#menu").append($("<a>").addClass("nav-link").attr({ "href": "https://ouo.io/VRgLgZ","target":"_blank"}).append(
+                        });
+
+                        $("#menu").append($("<a>").addClass("nav-link").attr({ "href": "https://ouo.io/VRgLgZ", "target": "_blank" }).append(
                             "<i class='fas fa-donate' aria-hidden='true'></i>" + " Ver Otras Opciones"
                         ));
-                        
+
+                        // Después de agregar contenido al sidebar, inicializamos los elementos desplegables
+                        inicializarElementosDesplegables();
                     } else {
                         window.location.href = 'IniciarSesion.aspx';
                     }
                 },
-                function () {
-                },
-                function () {
-                })
+                function () { },
+                function () { }
+            );
+        });
 
-        })
+        // Función para cerrar sesión
+        function CerrarSesion() {
+            AjaxGet("../Inicio.aspx/CerrarSesion",
+                function (response) {
+                    if (response.estado) {
+                        window.location.href = 'IniciarSesion.aspx';
+                    } else { }
+                },
+                function () { },
+                function () { }
+            );
+        }
         function CerrarSesion() {
             AjaxGet("../Inicio.aspx/CerrarSesion",
                 function (response) {
