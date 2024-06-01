@@ -1,9 +1,0 @@
-C:\ProyectosWebSENATI\ASP-NET\SistemaWebAdmin\sol_ventasweb\CapaDatos\bin\Release\CapaDatos.dll
-C:\ProyectosWebSENATI\ASP-NET\SistemaWebAdmin\sol_ventasweb\CapaDatos\bin\Release\CapaDatos.pdb
-C:\ProyectosWebSENATI\ASP-NET\SistemaWebAdmin\sol_ventasweb\CapaDatos\bin\Release\CapaModelo.dll
-C:\ProyectosWebSENATI\ASP-NET\SistemaWebAdmin\sol_ventasweb\CapaDatos\bin\Release\CapaModelo.pdb
-C:\ProyectosWebSENATI\ASP-NET\SistemaWebAdmin\sol_ventasweb\CapaDatos\obj\Release\CapaDatos.csproj.AssemblyReference.cache
-C:\ProyectosWebSENATI\ASP-NET\SistemaWebAdmin\sol_ventasweb\CapaDatos\obj\Release\CapaDatos.csproj.CoreCompileInputs.cache
-C:\ProyectosWebSENATI\ASP-NET\SistemaWebAdmin\sol_ventasweb\CapaDatos\obj\Release\CapaDatos.csproj.Up2Date
-C:\ProyectosWebSENATI\ASP-NET\SistemaWebAdmin\sol_ventasweb\CapaDatos\obj\Release\CapaDatos.dll
-C:\ProyectosWebSENATI\ASP-NET\SistemaWebAdmin\sol_ventasweb\CapaDatos\obj\Release\CapaDatos.pdb
