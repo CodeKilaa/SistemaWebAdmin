@@ -48,10 +48,14 @@
     <script src="Assets/Plugins/jquery-ui-1.12.1/jquery-ui.js"></script>
 
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
         /* Asegúrate de que el margen y el relleno del body sean 0 */
         body {
             margin: 0;
             padding: 0;
+            font-family: "Roboto", sans-serif;
+            font-weight: 400;
+            font-style: normal;
         }
 
         i::before {
