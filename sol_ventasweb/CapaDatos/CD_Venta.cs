@@ -187,6 +187,44 @@ namespace CapaDatos
                 }
             }
         }
+        
+        public List<Venta> getSalesSummaryByDate(DateTime FechaInicio, DateTime FechaFin)
+        {
+            List<Venta> rptListSalesSummary = new List<Venta>();
+            using (SqlConnection oConexion = new SqlConnection(Conexion.CN))
+            {
+                SqlCommand cmd = new SqlCommand("usp_getSalesSummaryByDate", oConexion);
+                cmd.Parameters.AddWithValue("@FechaInicio", FechaInicio);
+                cmd.Parameters.AddWithValue("@FechaFin", FechaFin);
+                cmd.CommandType = CommandType.StoredProcedure;
 
+                try{
+                    oConexion.Open();
+                    SqlDataReader dr = cmd.ExecuteReader();
+
+                    while (dr.Read())
+                    {
+                        rptListSalesSummary.Add(new Venta()
+                        {
+                            IdVenta = Convert.ToInt32(dr["IdVenta"].ToString()),
+                            Codigo = dr["Codigo"].ToString(),
+                            FechaRegistro = Convert.ToDateTime(dr["FechaRegistro"].ToString()).ToString("dd/MM/yyyy"),
+                            VFechaRegistro = Convert.ToDateTime(dr["FechaRegistro"].ToString()),
+                            oCliente = new Cliente() { Nombre = dr["Nombre"].ToString() },
+                            TotalCosto = float.Parse(dr["TotalCosto"].ToString())
+                        });
+                    }
+                    dr.Close();
+
+                    return rptListSalesSummary;
+
+                }catch (Exception ex){
+                    rptListSalesSummary = null;
+                    return rptListSalesSummary;
+                }
+            }
+
+        }
+        
     }
 }

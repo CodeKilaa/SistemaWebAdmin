@@ -290,6 +290,44 @@ namespace CapaDatos
 
 
 
+        /*
+        public List<Usuario> getCountTotalRowsInSomeTables()
+        {
+            List<Usuario> rptCountTotalRows= new List<Usuario>();
+            using (SqlConnection oConexion = new SqlConnection(Conexion.CN))
+            {
+                SqlCommand cmd = new SqlCommand("usp_getCountTotalOfSomeTables", oConexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                try
+                {
+                    oConexion.Open();
+                    SqlDataReader dr = cmd.ExecuteReader();
+
+                    while (dr.Read())
+                    {
+                        rptCountTotalRows.Add(new Usuario()
+                        {
+                            IdCompra = Convert.ToInt32(dr["IdCompra"].ToString()),
+                            oProveedor = new Proveedor() { Correo = dr["Correo"].ToString() },
+                            TotalCosto = float.Parse(dr["TotalCosto"].ToString())
+                        });
+                    }
+                    dr.Close();
+
+                    return rptCountTotalRows;
+
+                }
+                catch (Exception ex)
+                {
+                    rptCountTotalRows = null;
+                    return rptCountTotalRows;
+                }
+            }
+        }
+        */
+
+
     }
 
   

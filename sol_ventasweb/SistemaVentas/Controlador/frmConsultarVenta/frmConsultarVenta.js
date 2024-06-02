@@ -50,6 +50,7 @@ function CargarDatos() {
         nombres: $("#txtNombreCliente").val()
     };
 
+
     AjaxPost("../frmConsultarVenta.aspx/ObtenerLista", JSON.stringify(request),
         function (response) {
             $(".mt-3").LoadingOverlay("hide");

@@ -173,6 +173,44 @@ namespace CapaDatos
                 }
             }
         }
+
+        
+        public List<Compra> getShoppingSumaryStockOfSystem()
+        {
+            List<Compra> rptListaCompra = new List<Compra>();
+            using (SqlConnection oConexion = new SqlConnection(Conexion.CN))
+            {
+                SqlCommand cmd = new SqlCommand("usp_getShoppingSumaryStockOfSystem", oConexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                try
+                {
+                    oConexion.Open();
+                    SqlDataReader dr = cmd.ExecuteReader();
+
+                    while (dr.Read())
+                    {
+                        rptListaCompra.Add(new Compra()
+                        {
+                            IdCompra = Convert.ToInt32(dr["IdCompra"].ToString()),
+                            oProveedor = new Proveedor() { Correo = dr["Correo"].ToString() },
+                            TotalCosto = float.Parse(dr["TotalCosto"].ToString())
+                        });
+                    }
+                    dr.Close();
+
+                    return rptListaCompra;
+
+                }
+                catch (Exception ex)
+                {
+                    rptListaCompra = null;
+                    return rptListaCompra;
+                }
+            }
+        }
+        
+
     }
 
 

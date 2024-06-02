@@ -209,6 +209,7 @@
 
     <script src="Controlador/Utilidades.js"></script>
     <script src="Assets/Plugins/loadingoverlay/loadingoverlay.js"></script>
+    <script src="Assets/Plugins/chartjs/dist/chart.min.js"></script>
     <script>
         $(document).ready(function () {
             // Función para inicializar los elementos desplegables
