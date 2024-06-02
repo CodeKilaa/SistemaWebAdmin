@@ -18,5 +18,7 @@ namespace CapaDatos
         // public static string CN = "Data Source=SQL8010.site4now.net;Database=db_aa96c3_dbsisventasadminco;User ID=db_aa96c3_dbsisventasadminco_admin;Password=wqg5am1b;Trusted_Connection=false;TrustServerCertificate=True;";
         // ------ CREDENCIALES (SERVIDOR - MICROSOFT AZURE)
         // public static string CN = "Data Source=servsisventasadmincontrol.database.windows.net;Database=dbsisventasadmincontrol;User ID=userdbsisventasadmin;Password=fXq$85DWM^f4+YZN;Trusted_Connection=false;TrustServerCertificate=True;";
+        // ------ CREDENCIALES (SERVIDOR - FREEASPHOSTING)
+        // public static string CN = "Data Source=sql.bsite.net\\MSSQL2016;Database=razor75fixed_dbsisventasadmincontrol;User ID=razor75fixed_dbsisventasadmincontrol;Password=g6wr9xj9lp;Trusted_Connection=false;TrustServerCertificate=True;";
     }
 }
