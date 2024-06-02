@@ -1,0 +1,65 @@
+// --- NUEVOS PROCEDIMIENTOS ALMACENADOS PARA SISVENTASSENATI (BDPRUEBAS)
+
+--PROCEDMIENTO PARA OBTENER RESUMEN DE VENTAS POR FECHA
+
+create procedure usp_getSalesSummaryByDate(@FechaInicio date, @FechaFin date)
+as
+begin
+SET DATEFORMAT dmy;
+select v.IdVenta,
+v.Codigo,
+v.FechaRegistro,
+c.Nombre,
+v.TotalCosto 
+from VENTA v 
+inner join CLIENTE c on c.IdCliente = v.IdCliente
+where 
+CONVERT(date, v.FechaRegistro) between @FechaInicio and @FechaFin
+
+end
+
+go
+
+
+
+
+--PROCEDMIENTO PARA OBTENER RESUMEN DE COMPRA ORDENADO POR PROVEEDOR, DE MENOR A MAYOR DE TOTALCOSTO
+
+create procedure usp_getShoppingSumaryStockOfSystem
+as
+begin
+SELECT TOP (20)
+com.IdCompra,
+com.IdProveedor,
+com.TotalCosto,
+prov.Correo
+FROM COMPRA com 
+INNER JOIN PROVEEDOR prov ON prov.IdProveedor = com.IdProveedor
+ORDER BY TotalCosto DESC
+
+end
+
+go
+
+
+
+
+
+
+
+--PROCEDMIENTO PARA OBTENER EL CONTEO TOTAL DE REGISTROS EN DIFERENTES TABLAS
+
+create procedure usp_getCountTotalOfSomeTables
+as
+begin
+SET NOCOUNT ON;
+SELECT 
+(SELECT COUNT(*) FROM USUARIO) as totalusuario,
+(SELECT COUNT(*) FROM PRODUCTO) as totalproducto,
+(SELECT COUNT(*) FROM CATEGORIA) as totalcategoria,
+(SELECT COUNT(*) FROM PROVEEDOR) as totalproveedor,
+(SELECT COUNT(*) FROM TIENDA) as totaltienda
+
+end
+
+go
