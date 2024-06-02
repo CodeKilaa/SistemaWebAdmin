@@ -306,12 +306,13 @@ namespace CapaDatos
 
                     while (dr.Read())
                     {
-                        rptCountTotalRows.Add(new Usuario()
-                        {
-                            IdCompra = Convert.ToInt32(dr["IdCompra"].ToString()),
-                            oProveedor = new Proveedor() { Correo = dr["Correo"].ToString() },
-                            TotalCosto = float.Parse(dr["TotalCosto"].ToString())
-                        });
+                        rptCountTotalRows.Add(
+                            totalusuario = float.Parse(dr["totalusuario"].ToString()),
+                            totalproducto = float.Parse(dr["totalproducto"].ToString()),
+                            totalcategoria = float.Parse(dr["totalcategoria"].ToString()),
+                            totalproveedor = float.Parse(dr["totalproveedor"].ToString()),
+                            totaltienda = float.Parse(dr["totaltienda"].ToString())
+                        );
                     }
                     dr.Close();
 
@@ -326,6 +327,7 @@ namespace CapaDatos
             }
         }
         */
+        
 
 
     }
