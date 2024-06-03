@@ -152,6 +152,15 @@ $("#txtproductocodigo").on('keypress', function (e) {
 
 $('#btnAgregar').on('click', function () {
 
+    var productoStock = parseInt($("#txtproductostock").val());
+    var cantidadDeseada = parseInt($("#txtproductocantidad").val());
+
+    // Validar que la cantidad deseada no exceda el stock disponible
+    if (cantidadDeseada > productoStock) {
+        swal("Mensaje", "La cantidad deseada excede el stock disponible", "warning");
+        return; // Salir de la función si la validación falla
+    }
+
     $("#txtproductocantidad").val($("#txtproductocantidad").val() == "" ? "0" : $("#txtproductocantidad").val());
 
     var existe_codigo = false;
@@ -234,6 +243,7 @@ $('#btnTerminarGuardarVenta').on('click', function () {
         swal("Mensaje", "Ingrese el monto de pago", "warning");
         return;
     }
+
 
     var $totalproductos = 0;
     var $totalimportes = 0;
