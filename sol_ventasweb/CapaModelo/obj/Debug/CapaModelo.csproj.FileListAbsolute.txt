@@ -16,3 +16,9 @@ C:\Users\LUIS\OneDrive - SENATI\Documentos\SistemaWebAdmin\sol_ventasweb\CapaMod
 C:\Users\LUIS\OneDrive - SENATI\Documentos\SistemaWebAdmin\sol_ventasweb\CapaModelo\obj\Debug\CapaModelo.csproj.CoreCompileInputs.cache
 C:\Users\LUIS\OneDrive - SENATI\Documentos\SistemaWebAdmin\sol_ventasweb\CapaModelo\obj\Debug\CapaModelo.dll
 C:\Users\LUIS\OneDrive - SENATI\Documentos\SistemaWebAdmin\sol_ventasweb\CapaModelo\obj\Debug\CapaModelo.pdb
+C:\Users\Johan Martinez\Desktop\borrar\SistemaWebAdmin-luis\SistemaWebAdmin-luis\sol_ventasweb\CapaModelo\bin\Debug\CapaModelo.dll
+C:\Users\Johan Martinez\Desktop\borrar\SistemaWebAdmin-luis\SistemaWebAdmin-luis\sol_ventasweb\CapaModelo\bin\Debug\CapaModelo.pdb
+C:\Users\Johan Martinez\Desktop\borrar\SistemaWebAdmin-luis\SistemaWebAdmin-luis\sol_ventasweb\CapaModelo\obj\Debug\CapaModelo.csproj.AssemblyReference.cache
+C:\Users\Johan Martinez\Desktop\borrar\SistemaWebAdmin-luis\SistemaWebAdmin-luis\sol_ventasweb\CapaModelo\obj\Debug\CapaModelo.csproj.CoreCompileInputs.cache
+C:\Users\Johan Martinez\Desktop\borrar\SistemaWebAdmin-luis\SistemaWebAdmin-luis\sol_ventasweb\CapaModelo\obj\Debug\CapaModelo.dll
+C:\Users\Johan Martinez\Desktop\borrar\SistemaWebAdmin-luis\SistemaWebAdmin-luis\sol_ventasweb\CapaModelo\obj\Debug\CapaModelo.pdb

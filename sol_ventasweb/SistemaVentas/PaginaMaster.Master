@@ -229,6 +229,12 @@
                         $("#nombreusuario").text(response.objeto.NombreUsuario);
                         $("#rolusuario").text(response.objeto.oRol.Descripcion);
 
+
+                        // Agregar enlace para Inicio
+                        $("#menu").append($("<a>").addClass("nav-link elemento-azul").attr({ "href": "Inicio.aspx" }).append(
+                            "<i class='bi bi-house-door-fill'></i> Inicio"
+                        ));
+                        
                         // Obtener la lista de elementos
                         var listaMenu = response.objeto.oListaMenu;
 
